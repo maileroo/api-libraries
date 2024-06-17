@@ -9,11 +9,7 @@ Sending emails with our easy-to-use SDKs, providing seamless integration and pow
 ### PHP
 
 ```
-require_once("MailerooClient.php");
-
-$api_key = 'YOUR_API_KEY';
-
-$client = new MailerooClient($api_key);
+$client = new MailerooClient("YOUR_API_KEY");
 
 $client->setFrom('Maileroo', 'no.reply@mail.maileroo.com')
     ->setTo('John Doe', 'john.doe@maileroo.com')
@@ -38,7 +34,28 @@ TODO
 ### Golang
 
 ```
-TODO
+func main() {
+
+	client := NewMailerooClient("YOUR_API_KEY")
+
+	client.SetFrom("John Doe", "john.doe@example.com").
+		SetTo("Jane Doe", "jane.doe@example.com").
+		SetSubject("Hello").
+		SetHtml("<h1>Hello World</h1>").
+		SetPlain("Hello World").
+		SetReferenceId(client.GenerateReferenceId()).
+		SetTracking(true).
+		SetTags(map[string]string{"tag1": "value1", "tag2": "value2"})
+
+	response, err := client.SendBasicEmail()
+
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Response:", response)
+	}
+
+}
 ```
 
 ### C#

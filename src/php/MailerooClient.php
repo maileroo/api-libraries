@@ -2,8 +2,7 @@
 
 class MailerooClient {
 
-//    const API_ENDPOINT = 'https://smtp.maileroo.com/';
-    const API_ENDPOINT = 'http://localhost:7888';
+    const API_ENDPOINT = 'https://smtp.maileroo.com/';
 
     private $api_key;
     private $data = [];
