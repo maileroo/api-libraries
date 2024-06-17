@@ -22,13 +22,55 @@ $client->setFrom('Maileroo', 'no.reply@mail.maileroo.com')
 ### Node.js
 
 ```
-TODO
+const MailerooClient = require('MailerooClient');
+
+const apiKey = 'YOUR_API_KEY';
+const client = new MailerooClient(apiKey);
+
+client.setFrom('Sender Name', 'sender@example.com')
+    .setTo('Recipient Name', 'receiver@example.com')
+    .setSubject('Test Email')
+    .setHtml('<p>This is a test email</p>')
+    .setPlain('This is a test email')
+    .setReferenceId(client.generateReferenceId())
+    .setTags({
+        'tag1': 'value1',
+        'tag2': 'value2'
+    })
+    .setTracking(true);
+
+client.addAttachment('path/to/file', 'file_name', 'file_type');
+
+client.sendBasicEmail().then(response => {
+
+    if (response.success) {
+        console.log('Email sent successfully:', response.data);
+    } else {
+        console.error('Error sending email:', response.error);
+    }
+
+}).catch(error => {
+
+    console.error('Error sending email:', error);
+
+});
 ```
 
 ### Python
 
 ```
-TODO
+client = MailerooClient('API_KEY')
+
+response = client.set_from('Sender Name', 'sender@example.com') \
+    .set_to('Recipient Name', 'recipient@example.com') \
+    .set_subject('Test Email') \
+    .set_html('<h1>Hello</h1>') \
+    .set_plain('Hello') \
+    .set_tracking(True) \
+    .set_reference_id(client.generate_reference_id()) \
+    .set_tags({'tag1': 'value1', 'tag2': 'value2'}) \
+    .add_attachment('test.txt', 'test.txt', 'text/plain') \
+    .send_basic_email()
 ```
 
 ### Golang
@@ -57,10 +99,3 @@ func main() {
 
 }
 ```
-
-### C#
-
-```
-TODO
-```
-
