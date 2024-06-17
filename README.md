@@ -9,7 +9,18 @@ Sending emails with our easy-to-use SDKs, providing seamless integration and pow
 ### PHP
 
 ```
-TODO
+require_once("MailerooClient.php");
+
+$api_key = 'YOUR_API_KEY';
+
+$client = new MailerooClient($api_key);
+
+$client->setFrom('Maileroo', 'no.reply@mail.maileroo.com')
+    ->setTo('John Doe', 'john.doe@maileroo.com')
+    ->setSubject('Hello World')
+    ->setHtml('<p>Hello World</p>')
+    ->setPlain('Hello World')
+    ->sendBasicEmail();
 ```
 
 ### Node.js
