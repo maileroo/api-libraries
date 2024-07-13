@@ -29,7 +29,7 @@ class MailerooClient {
         $this->data['plain'] = '';
         $this->data['tracking'] = 'yes';
         $this->data['reference_id'] = '';
-        $this->data['tags'] = [];
+        $this->data['tags'] = '';
         $this->data['template_id'] = '';
         $this->data['template_data'] = '';
 
